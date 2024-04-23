@@ -1,10 +1,11 @@
 # 3DPixar Style
-
+run app.py
   
 ## Requirements
 
 diffusers==0.27.2
 transformers==4.41.0.dev0
+flask
 
 ## Results
 
