@@ -10,7 +10,7 @@ transformers==4.41.0.dev0
 
 | Image 1             | Image 2             |
 |--------------------|--------------------|
-| ![Description 1](test_4.jpg) | ![Description 2](./test/1.jpg) |
+| ![Description 1](/test/1.jpg) | ![Description 2](output_image.png) |
 
 
 
