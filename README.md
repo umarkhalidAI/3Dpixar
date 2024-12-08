@@ -61,11 +61,12 @@ We provide an `environment.yml` file with most dependencies. Follow these steps:
 ```bash
 conda env create -f environment.yml
 conda activate <your_environment_name>
+```
+
 
 You will need to download the NLP model separately with:
 
 ```
-
 python -m spacy download en_core_web_sm
 
 ```
@@ -73,7 +74,6 @@ python -m spacy download en_core_web_sm
 Lastly, to install GroundingDINO:
 
 ```
-
 export CUDA_HOME=/path/to/your/cuda/installation
 
 git clone https://github.com/IDEA-Research/GroundingDINO.git
@@ -84,8 +84,6 @@ mkdir weights
 cd weights
 wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth
 cd ../../
-
 ```
 
-```
 
