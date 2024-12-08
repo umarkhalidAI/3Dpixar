@@ -14,7 +14,7 @@ This script processes and edits video files using an Ip2p model with cross-frame
 
 **Option 1 (Recommended)** – Use an explicit label to guide editing:
 
-````bash
+```
 python Video_Editing.py --directory "/path/to/videos" \
     --guidance_scale 8.0 \
     --image_guidance_scale 2.0 \
@@ -22,9 +22,9 @@ python Video_Editing.py --directory "/path/to/videos" \
     --prompt "Turn sky cloudy" \
     --frames_per_batch 16 \
     --label "sky"
-
+```
 **Option 2 (Recommended)** – Automatically identify labels using CLIP-based predictions::
-```bash
+```
 python Video_Editing.py --directory "/path/to/videos" \
     --guidance_scale 8.0 \
     --image_guidance_scale 2.0 \
@@ -32,9 +32,9 @@ python Video_Editing.py --directory "/path/to/videos" \
     --prompt "Turn sky cloudy" \
     --frames_per_batch 16 \
     --clip_label
-
+```
 **Option 3** – No segmentation-based guidance:
-```bash
+```
 python Video_Editing.py --directory "/path/to/videos" \
     --guidance_scale 8.0 \
     --image_guidance_scale 2.0 \
@@ -42,7 +42,7 @@ python Video_Editing.py --directory "/path/to/videos" \
     --prompt "Turn sky cloudy" \
     --frames_per_batch 16
 
-````
+```
 
 # User-Defined Masking vs. Automatic Identification
 
