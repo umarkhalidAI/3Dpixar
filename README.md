@@ -1,6 +1,6 @@
-# Video Editing
+# Image Editing
 
-This script processes and edits video files using an Ip2p model with cross-frame attention. It supports various customizable parameters for creative transformations, including guidance scales, diffusion steps, and batch processing.
+This script processes and edits video files using various image editing models
 
 ## Features
 
@@ -15,34 +15,26 @@ This script processes and edits video files using an Ip2p model with cross-frame
 **Option 1 (Recommended)** – Use an explicit label to guide editing:
 
 ```
-python Video_Editing.py --directory "/path/to/videos" \
-    --guidance_scale 8.0 \
-    --image_guidance_scale 2.0 \
-    --diffusion_steps 100 \
-    --prompt "Turn sky cloudy" \
-    --frames_per_batch 16 \
-    --label "sky"
-```
-**Option 2 (Recommended)** – Automatically identify labels using CLIP-based predictions::
-```
-python Video_Editing.py --directory "/path/to/videos" \
-    --guidance_scale 8.0 \
-    --image_guidance_scale 2.0 \
-    --diffusion_steps 100 \
-    --prompt "Turn sky cloudy" \
-    --frames_per_batch 16 \
-    --clip_label
-```
-**Option 3** – No segmentation-based guidance:
-```
-python Video_Editing.py --directory "/path/to/videos" \
-    --guidance_scale 8.0 \
-    --image_guidance_scale 2.0 \
-    --diffusion_steps 100 \
-    --prompt "Turn sky cloudy" \
-    --frames_per_batch 16
+python Image_Editing_folder.py \
+    --directory "./../../output_clips/02206.Axon_Body_4_Video_2023-11-27_1542_D01A1513G_1590_5146/" \
+    --prompt "turn jacket green"\
+     --force_512 
+     --label "jacket"
 
 ```
+
+**Option 2** – Automatically identify labels using CLIP-based predictions::
+
+```
+python Image_Editing_auto_mask.py --video_path "/path/to/videos" \
+    --guidance_scale 8.0 \
+    --image_guidance_scale 2.0 \
+    --diffusion_steps 100 \
+    --prompt "Turn sky cloudy" \
+    
+```
+
+
 
 # User-Defined Masking vs. Automatic Identification
 
@@ -50,19 +42,17 @@ python Video_Editing.py --directory "/path/to/videos" \
 
 **Option 2:** The script automatically determines the target object label through a grounding mask extraction stage. This process uses CLIP-Score Filtering to extract key noun phrases from the prompt and then leverages [Grounded-SAM](https://github.com/IDEA-Research/GroundingDINO) to create the final segmentation mask.
 
-**Option 3:** No masking is used, allowing the entire frame to be modified according to the prompt without localized segmentation.
+
 
 # Installation
 
-We provide an `environment.yml` file with most dependencies. Follow these steps:
+We provide an `requirement.txt` file with most dependencies. Follow these steps:
 
 **Create and activate the environment:**
 
-```bash
-conda env create -f environment.yml
-conda activate <your_environment_name>
-```
 
+
+## Following is Optional only if you want to use Automatically Identify the Mask-Label##
 
 You will need to download the NLP model separately with:
 
@@ -85,5 +75,3 @@ cd weights
 wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth
 cd ../../
 ```
-
-
